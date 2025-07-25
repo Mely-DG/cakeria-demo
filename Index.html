@@ -127,14 +127,25 @@
     .whatsapp:hover {
         background-color: #1ebe5d;
 
-        .cake-card .zoom-container img {
+.cake-card .zoom-container {
+  transition: transform 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.cake-card:hover .zoom-container {
+  transform: scale(1.03); /* pequeño zoom del contenedor */
+  background-color: #fee4e7; /* un poco más claro */
+  box-shadow: 0 12px 30px rgba(255, 182, 193, 0.5); /* sombra más profunda y difusa */
+}
+
+.cake-card .zoom-container img {
   transition: transform 0.4s ease;
 }
 
 .cake-card:hover .zoom-container img {
-  transform: scale(1.08);
+  transform: scale(1.15); /* zoom más fuerte en la imagen */
 }
-    }
+
+    
 </style>
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 </head>
@@ -281,7 +292,7 @@
         <div class="max-w-6xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Cake 1 - Floral Birthday -->
-                <div class="cake-card bg-white rounded-lg overflow-hidden shadow-md">
+                <div class="cake-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="zoom-in">
                     <div class="h-64 bg-[#f8e3d5] flex items-center justify-center p-4">
                       <img src="img/Diseño sin título.png" alt="Pastel de cumpleaños floral" class="cake-image" />
                     </div>
@@ -302,7 +313,7 @@
                         <p class="text-gray-600">Clásico pastel de terciopelo rojo con frosting de queso crema.</p>
                     </div>
                 </div>-->
-                <div class="cake-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="zoom-in">
+<div class="cake-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="zoom-in">
   <span class="sticker">Más vendido</span>
   
   <div class="zoom-container h-64 bg-[#f8d7d9] flex items-center justify-center p-4">
@@ -315,7 +326,7 @@
   </div>
 </div>
                 <!-- Cake 3 - Kids Theme -->
-                <div class="cake-card bg-white rounded-lg overflow-hidden shadow-md">
+                <div class="cake-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="zoom-in">
                     <div class="h-64 bg-[#d1f0fd] flex items-center justify-center p-4">
                         <img src="img/tematico-infantil2.png" alt="Pastel Infantil" class="cake-image" />
                     </div>
@@ -326,7 +337,7 @@
                 </div>
                 
                 <!-- Cake 4 - Minimal Wedding -->
-                <div class="cake-card bg-white rounded-lg overflow-hidden shadow-md">
+                <div class="cake-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="zoom-in">
                     <div class="h-64 bg-[#f0f0f0] flex items-center justify-center p-4">
                        <img src="img/boda-minimalista2.png" alt="Pastel Boda" class="cake-image" />
                     </div>
@@ -337,7 +348,7 @@
                 </div>
                 
                 <!-- Cake 5 - Strawberry Cheesecake -->
-                <div class="cake-card bg-white rounded-lg overflow-hidden shadow-md">
+                <div class="cake-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="zoom-in">
                     <div class="h-64 bg-[#ffe6e6] flex items-center justify-center p-4">
                         <img src="img/cheesecake-fresa2.png" alt="Pastel Cheesecake" class="cake-image" />
                     </div>
@@ -348,7 +359,7 @@
                 </div>
                 
                 <!-- Cake 6 - Unicorn Cake -->
-                <div class="cake-card bg-white rounded-lg overflow-hidden shadow-md">
+                <div class="cake-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="zoom-in">
                     <div class="h-64 bg-[#f3e5f5] flex items-center justify-center p-4">
                         <img src="img/unicornio2.png" alt="Pastel de unicornio" class="cake-image" />
                     </div>

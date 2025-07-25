@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cakería - Pasteles Artesanales</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary: #b9763a;
+            --background: #f9f5f0;
+            --text: #3a2c24;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .cake-card {
+            transition: all 0.3s ease;
+        }
+        
+        .cake-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(185, 118, 58, 0.2);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #a06732;
+        }
+        
+        .btn-secondary {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(185, 118, 58, 0.1);
+        }
+        
+        .decorative-icon {
+            fill: var(--primary);
+            opacity: 0.7;
+        }
+        
+        /* Decorative elements */
+        .bakery-icon {
+            position: absolute;
+            opacity: 0.15;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        
+        @keyframes floatReverse {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(-3deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-delayed {
+            animation: float 8s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+        
+        .floating-reverse {
+            animation: floatReverse 7s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+        
+        .cake-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <!-- Decorative elements -->
+    <div class="fixed w-full h-full pointer-events-none overflow-hidden">
+        <!-- Cupcake -->
+        <div class="bakery-icon w-20 h-20 floating" style="top: 15%; left: 5%;">
+            <svg viewBox="0 0 512 512" class="cake-image">
+                <!-- Cupcake Base -->
+                <path fill="#8B4513" d="M160,352v80c0,8.837,7.163,16,16,16h160c8.837,0,16-7.163,16-16v-80H160z"/>
+                <!-- Cupcake Wrapper -->
+                <path fill="#D2691E" d="M144,256c-26.51,0-48,21.49-48,48c0,26.51,21.49,48,48,48h224c26.51,0,48-21.49,48-48c0-26.51-21.49-48-48-48H144z"/>
+                <path fill="#A0522D" d="M144,256c-26.51,0-48,21.49-48,48c0,26.51,21.49,48,48,48h224c26.51,0,48-21.49,48-48c0-26.51-21.49-48-48-48H144z M368,304c0,8.837-7.163,16-16,16H160c-8.837,0-16-7.163-16-16s7.163-16,16-16h192C360.837,288,368,295.163,368,304z"/>
+                <!-- Frosting -->
+                <path fill="#FFB6C1" d="M352,256c0-53.02-42.98-96-96-96s-96,42.98-96,96H352z"/>
+                <path fill="#FF69B4" d="M336,256c0-44.183-35.817-80-80-80s-80,35.817-80,80H336z"/>
+                <path fill="#FFB6C1" d="M320,256c0-35.346-28.654-64-64-64s-64,28.654-64,64H320z"/>
+                <!-- Sprinkles -->
+                <circle fill="#FF0000" cx="220" cy="200" r="4"/>
+                <circle fill="#00FF00" cx="260" cy="180" r="4"/>
+                <circle fill="#0000FF" cx="300" cy="210" r="4"/>
+                <circle fill="#FFFF00" cx="240" cy="220" r="4"/>
+                <circle fill="#FF00FF" cx="280" cy="190" r="4"/>
+                <!-- Cherry on top -->
+                <circle fill="#FF0000" cx="256" cy="160" r="16"/>
+                <path fill="#006400" d="M260,160c0,0-4-40,20-60"/>
+            </svg>
+        </div>
+        
+        <!-- Piping Bag -->
+        <div class="bakery-icon w-24 h-24 floating-delayed" style="top: 70%; left: 85%;">
+            <svg viewBox="0 0 512 512" class="cake-image">
+                <!-- Piping Bag -->
+                <path fill="#F5F5F5" d="M128,128L384,384L448,128L128,128z"/>
+                <path fill="#E0E0E0" d="M128,128L384,384L448,128L128,128z M144,144L416,144L368,352L176,160L144,144z"/>
+                <!-- Frosting -->
+                <path fill="#FF69B4" d="M96,96L128,128L176,160L96,96z"/>
+                <!-- Tip -->
+                <path fill="#C0C0C0" d="M80,80L96,96L176,160L80,80z"/>
+                <path fill="#A0A0A0" d="M64,64L80,80L96,96L64,64z"/>
+            </svg>
+        </div>
+        
+        <!-- Cake Slice -->
+        <div class="bakery-icon w-20 h-20 floating-reverse" style="top: 30%; right: 8%;">
+            <svg viewBox="0 0 512 512" class="cake-image">
+                <!-- Cake Base -->
+                <path fill="#F5DEB3" d="M96,416L416,416L256,128L96,416z"/>
+                <!-- Frosting -->
+                <path fill="#FFFFFF" d="M96,416L416,416L256,368L96,416z"/>
+                <!-- Layers -->
+                <path fill="#FFB6C1" d="M128,352L384,352L256,192L128,352z"/>
+                <path fill="#FFFFFF" d="M128,352L384,352L256,320L128,352z"/>
+                <path fill="#F5DEB3" d="M160,288L352,288L256,224L160,288z"/>
+                <!-- Strawberry -->
+                <path fill="#FF0000" d="M240,176L272,176L256,144L240,176z"/>
+                <circle fill="#FFFFFF" cx="248" cy="160" r="2"/>
+                <circle fill="#FFFFFF" cx="256" cy="168" r="2"/>
+                <circle fill="#FFFFFF" cx="264" cy="160" r="2"/>
+                <!-- Stem -->
+                <path fill="#006400" d="M256,144L256,128"/>
+            </svg>
+        </div>
+        
+        <!-- Icing Swirl -->
+        <div class="bakery-icon w-16 h-16 floating" style="top: 50%; left: 15%;">
+            <svg viewBox="0 0 512 512" class="cake-image">
+                <!-- Icing Swirl -->
+                <path fill="#FFFFFF" d="M256,64c-106.039,0-192,85.961-192,192s85.961,192,192,192s192-85.961,192-192S362.039,64,256,64z M256,384c-70.692,0-128-57.308-128-128s57.308-128,128-128s128,57.308,128,128S326.692,384,256,384z"/>
+                <path fill="#FFB6C1" d="M256,128c-70.692,0-128,57.308-128,128s57.308,128,128,128s128-57.308,128-128S326.692,128,256,128z M256,320c-35.346,0-64-28.654-64-64s28.654-64,64-64s64,28.654,64,64S291.346,320,256,320z"/>
+                <path fill="#FF69B4" d="M256,192c-35.346,0-64,28.654-64,64s28.654,64,64,64s64-28.654,64-64S291.346,192,256,192z M256,288c-17.673,0-32-14.327-32-32s14.327-32,32-32s32,14.327,32,32S273.673,288,256,288z"/>
+                <path fill="#FFFFFF" d="M256,224c-17.673,0-32,14.327-32,32s14.327,32,32,32s32-14.327,32-32S273.673,224,256,224z"/>
+            </svg>
+        </div>
+        
+        <!-- Rolling Pin -->
+        <div class="bakery-icon w-24 h-24 floating-delayed" style="top: 10%; right: 15%;">
+            <svg viewBox="0 0 512 512" class="cake-image">
+                <!-- Rolling Pin -->
+                <circle fill="#8B4513" cx="64" cy="256" r="32"/>
+                <circle fill="#8B4513" cx="448" cy="256" r="32"/>
+                <rect fill="#D2691E" x="64" y="224" width="384" height="64"/>
+                <rect fill="#A0522D" x="96" y="240" width="320" height="32"/>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="relative py-16 px-4 text-center">
+        <div class="max-w-4xl mx-auto">
+            <div class="inline-block mb-4">
+                <!-- Cake Logo -->
+                <div class="w-20 h-20 mx-auto mb-2">
+                    <svg viewBox="0 0 512 512" class="cake-image decorative-icon">
+                        <!-- Three-tier Cake -->
+                        <rect fill="#F5DEB3" x="96" y="352" width="320" height="64" rx="8" ry="8"/>
+                        <rect fill="#FFB6C1" x="96" y="336" width="320" height="16"/>
+                        
+                        <rect fill="#F5DEB3" x="128" y="256" width="256" height="80" rx="8" ry="8"/>
+                        <rect fill="#FFB6C1" x="128" y="240" width="256" height="16"/>
+                        
+                        <rect fill="#F5DEB3" x="160" y="160" width="192" height="80" rx="8" ry="8"/>
+                        <rect fill="#FFB6C1" x="160" y="144" width="192" height="16"/>
+                        
+                        <!-- Decorations -->
+                        <circle fill="#FF0000" cx="176" cy="176" r="8"/>
+                        <circle fill="#FF0000" cx="336" cy="176" r="8"/>
+                        <circle fill="#FF0000" cx="256" cy="176" r="8"/>
+                        
+                        <circle fill="#FF0000" cx="160" cy="272" r="8"/>
+                        <circle fill="#FF0000" cx="352" cy="272" r="8"/>
+                        <circle fill="#FF0000" cx="256" cy="272" r="8"/>
+                        <circle fill="#FF0000" cx="208" cy="272" r="8"/>
+                        <circle fill="#FF0000" cx="304" cy="272" r="8"/>
+                        
+                        <circle fill="#FF0000" cx="128" cy="368" r="8"/>
+                        <circle fill="#FF0000" cx="384" cy="368" r="8"/>
+                        <circle fill="#FF0000" cx="176" cy="368" r="8"/>
+                        <circle fill="#FF0000" cx="336" cy="368" r="8"/>
+                        <circle fill="#FF0000" cx="224" cy="368" r="8"/>
+                        <circle fill="#FF0000" cx="288" cy="368" r="8"/>
+                        <circle fill="#FF0000" cx="256" cy="368" r="8"/>
+                        
+                        <!-- Candles -->
+                        <rect fill="#FFFF00" x="240" y="112" width="8" height="32"/>
+                        <rect fill="#FFFF00" x="264" y="112" width="8" height="32"/>
+                        <path fill="#FF0000" d="M244,112c0-4.418,3.582-8,8-8s8,3.582,8,8H244z"/>
+                        <path fill="#FF0000" d="M268,112c0-4.418,3.582-8,8-8s8,3.582,8,8H268z"/>
+                        <path fill="#FF4500" d="M244,104c0-4.418,3.582-8,8-8s8,3.582,8,8H244z"/>
+                        <path fill="#FF4500" d="M268,104c0-4.418,3.582-8,8-8s8,3.582,8,8H268z"/>
+                    </svg>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold text-[#b9763a] tracking-wide">Cakería</h1>
+                <div class="h-1 w-24 bg-[#b9763a] mx-auto mt-2 mb-6 rounded-full"></div>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Escanéame y elige tu pastel favorito</h2>
+            <p class="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto">Inspírate con nuestros diseños y haz tu pedido personalizado</p>
+        </div>
+    </header>
+
+    <!-- Gallery Section -->
+    <section class="py-12 px-4 bg-white bg-opacity-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Cake 1 - Floral Birthday -->
+                <div class="cake-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="h-64 bg-[#f8e3d5] flex items-center justify-center p-4">
+                        <svg viewBox="0 0 512 512" class="cake-image">
+                            <!-- Three-tier Cake -->
+                            <rect fill="#FFFFFF" x="96" y="352" width="320" height="64" rx="8" ry="8"/>
+                            <rect fill="#F5DEB3" x="96" y="336" width="320" height="16"/>
+                            
+                            <rect fill="#FFFFFF" x="128" y="256" width="256" height="80" rx="8" ry="8"/>
+                            <rect fill="#F5DEB3" x="128" y="240" width="256" height="16"/>
+                            
+                            <rect fill="#FFFFFF" x="160" y="160" width="192" height="80" rx="8" ry="8"/>
+                            <rect fill="#F5DEB3" x="160" y="144" width="192" height="16"/>
+                            
+                            <!-- Flower Decorations -->
+                            <!-- Rose 1 -->
+                            <circle fill="#FF69B4" cx="176" cy="176" r="16"/>
+                            <circle fill="#FF1493" cx="176" cy="176" r="8"/>
+                            <path fill="#006400" d="M176,192L176,208"/>
+                            <path fill="#006400" d="M176,208L168,216"/>
+                            <path fill="#006400" d="M176,208L184,216"/>
+                            
+                            <!-- Rose 2 -->
+                            <circle fill="#FF69B4" cx="336" cy="176" r="16"/>
+                            <circle fill="#FF1493" cx="336" cy="176" r="8"/>
+                            <path fill="#006400" d="M336,192L336,208"/>
+                            <path fill="#006400" d="M336,208L328,216"/>
+                            <path fill="#006400" d="M336,208L344,216"/>
+                            
+                            <!-- Lily -->
+                            <path fill="#FFFFFF" d="M256,160L248,176L264,176z"/>
+                            <path fill="#FFFFFF" d="M256,160L240,168L256,184L272,168z"/>
+                            <circle fill="#FFFF00" cx="256" cy="176" r="4"/>
+                            <path fill="#006400" d="M256,184L256,200"/>
+                            
+                            <!-- Small Flowers -->
+                            <circle fill="#9370DB" cx="160" cy="272" r="12"/>
+                            <circle fill="#8A2BE2" cx="160" cy="272" r="6"/>
+                            <path fill="#006400" d="M160,284L160,292"/>
+                            
+                            <circle fill="#9370DB" cx="352" cy="272" r="12"/>
+                            <circle fill="#8A2BE2" cx="352" cy="272" r="6"/>
+                            <path fill="#006400" d="M352,284L352,292"/>
+                            
+                            <circle fill="#9370DB" cx="256" cy="272" r="12"/>
+                            <circle fill="#8A2BE2" cx="256" cy="272" r="6"/>
+                            <path fill="#006400" d="M256,284L256,292"/>
+                            
+                            <!-- Bottom Tier Decorations -->
+                            <path fill="#006400" d="M128,368C128,368,144,352,160,368C176,384,192,368,192,368"/>
+                            <path fill="#006400" d="M208,368C208,368,224,352,240,368C256,384,272,368,272,368"/>
+                            <path fill="#006400" d="M288,368C288,368,304,352,320,368C336,384,352,368,352,368"/>
+                            
+                            <!-- Candles -->
+                            <rect fill="#FFD700" x="240" y="112" width="8" height="32"/>
+                            <rect fill="#FFD700" x="264" y="112" width="8" height="32"/>
+                            <path fill="#FF4500" d="M244,112c0-4.418,3.582-8,8-8s8,3.582,8,8H244z"/>
+                            <path fill="#FF4500" d="M268,112c0-4.418,3.582-8,8-8s8,3.582,8,8H268z"/>
+                        </svg>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold mb-2">Floral Birthday</h3>
+                        <p class="text-gray-600">Delicado pastel decorado con flores de azúcar y detalles botánicos.</p>
+                    </div>
+                </div>
+                
+                <!-- Cake 2 - Red Velvet -->
+                <div class="cake-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="h-64 bg-[#f8d7d9] flex items-center justify-center p-4">
+                        <svg viewBox="0 0 512 512" class="cake-image">
+                            <!-- Red Velvet Cake -->
+                            <rect fill="#8B0000" x="96" y="352" width="320" height="32" rx="4" ry="4"/>
+                            <rect fill="#8B0000" x="96" y="288" width="320" height="32" rx="4" ry="4"/>
+                            <rect fill="#8B0000" x="96" y="224" width="320" height="32" rx="4" ry="4"/>
+                            <rect fill="#8B0000" x="96" y="160" width="320" height="32" rx="4" ry="4"/>
+                            
+                            <!-- Cream Cheese Frosting -->
+                            <rect fill="#FFFFF0" x="96" y="320" width="320" height="32"/>
+                            <rect fill="#FFFFF0" x="96" y="256" width="320" height="32"/>
+                            <rect fill="#FFFFF0" x="96" y="192" width="320" height="32"/>
+                            <rect fill="#FFFFF0" x="96" y="128" width="320" height="32"/>
+                            
+                            <!-- Frosting Swirls -->
+                            <circle fill="#FFFFF0" cx="128" cy="128" r="16"/>
+                            <circle fill="#FFFFF0" cx="192" cy="128" r="16"/>
+                            <circle fill="#FFFFF0" cx="256" cy="128" r="16"/>
+                            <circle fill="#FFFFF0" cx="320" cy="128" r="16"/>
+                            <circle fill="#FFFFF0" cx="384" cy="128" r="16"/>
+                            
+                            <!-- Cake Slice Cut -->
+                            <path fill="#8B0000" d="M320,384L384,384L384,128L320,128z"/>
+                            <path fill="#FFFFF0" d="M320,352L384,352L384,320L320,320z"/>
+                            <path fill="#FFFFF0" d="M320,288L384,288L384,256L320,256z"/>
+                            <path fill="#FFFFF0" d="M320,224L384,224L384,192L320,192z"/>
+                            <path fill="#FFFFF0" d="M320,160L384,160L384,128L320,128z"/>
+                            
+                            <!-- Crumbs -->
+                            <circle fill="#8B0000" cx="400" cy="360" r="4"/>
+                            <circle fill="#8B0000" cx="408" cy="344" r="3"/>
+                            <circle fill="#8B0000" cx="392" cy="336" r="2"/>
+                        </svg>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold mb-2">Red Velvet</h3>
+                        <p class="text-gray-600">Clásico pastel de terciopelo rojo con frosting de queso crema.</p>
+                    </div>
+                </div>
+                
+                <!-- Cake 3 - Kids Theme -->
+                <div class="cake-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="h-64 bg-[#d1f0fd] flex items-center justify-center p-4">
+                        <svg viewBox="0 0 512 512" class="cake-image">
+                            <!-- Base Cake -->
+                            <rect fill="#87CEFA" x="96" y="320" width="320" height="64" rx="8" ry="8"/>
+                            <rect fill="#F5DEB3" x="128" y="224" width="256" height="96" rx="8" ry="8"/>
+                            <rect fill="#FFB6C1" x="160" y="160" width="192" height="64" rx="8" ry="8"/>
+                            
+                            <!-- Frosting -->
+                            <rect fill="#FFFFFF" x="96" y="304" width="320" height="16"/>
+                            <rect fill="#FFFFFF" x="128" y="208" width="256" height="16"/>
+                            <rect fill="#FFFFFF" x="160" y="144" width="192" height="16"/>
+                            
+                            <!-- Balloons -->
+                            <circle fill="#FF0000" cx="176" cy="128" r="24"/>
+                            <path fill="#800000" d="M176,152L176,192"/>
+                            
+                            <circle fill="#00FF00" cx="256" cy="112" r="24"/>
+                            <path fill="#006400" d="M256,136L256,192"/>
+                            
+                            <circle fill="#0000FF" cx="336" cy="128" r="24"/>
+                            <path fill="#000080" d="M336,152L336,192"/>
+                            
+                            <!-- Candy Decorations -->
+                            <circle fill="#FF00FF" cx="144" cy="240" r="8"/>
+                            <circle fill="#FFFF00" cx="176" cy="240" r="8"/>
+                            <circle fill="#00FFFF" cx="208" cy="240" r="8"/>
+                            <circle fill="#FF00FF" cx="240" cy="240" r="8"/>
+                            <circle fill="#FFFF00" cx="272" cy="240" r="8"/>
+                            <circle fill="#00FFFF" cx="304" cy="240" r="8"/>
+                            <circle fill="#FF00FF" cx="336" cy="240" r="8"/>
+                            <circle fill="#FFFF00" cx="368" cy="240" r="8"/>
+                            
+                            <!-- Bottom Tier Decorations -->
+                            <circle fill="#FFFFFF" cx="128" cy="352" r="12"/>
+                            <circle fill="#FF0000" cx="128" cy="352" r="6"/>
+                            
+                            <circle fill="#FFFFFF" cx="192" cy="352" r="12"/>
+                            <circle fill="#00FF00" cx="192" cy="352" r="6"/>
+                            
+                            <circle fill="#FFFFFF" cx="256" cy="352" r="12"/>
+                            <circle fill="#0000FF" cx="256" cy="352" r="6"/>
+                            
+                            <circle fill="#FFFFFF" cx="320" cy="352" r="12"/>
+                            <circle fill="#FF00FF" cx="320" cy="352" r="6"/>
+                            
+                            <circle fill="#FFFFFF" cx="384" cy="352" r="12"/>
+                            <circle fill="#FFFF00" cx="384" cy="352" r="6"/>
+                        </svg>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold mb-2">Kids Theme</h3>
+                        <p class="text-gray-600">Pasteles temáticos para fiestas infantiles con diseños divertidos.</p>
+                    </div>
+                </div>
+                
+                <!-- Cake 4 - Minimal Wedding -->
+                <div class="cake-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="h-64 bg-[#f0f0f0] flex items-center justify-center p-4">
+                        <svg viewBox="0 0 512 512" class="cake-image">
+                            <!-- Elegant Three-tier Cake -->
+                            <rect fill="#FFFFFF" x="96" y="320" width="320" height="64" rx="8" ry="8"/>
+                            <rect fill="#F8F8F8" x="128" y="224" width="256" height="96" rx="8" ry="8"/>
+                            <rect fill="#FFFFFF" x="160" y="128" width="192" height="96" rx="8" ry="8"/>
+                            
+                            <!-- Subtle Texture -->
+                            <path fill="#F0F0F0" d="M96,320C96,320,128,336,160,320C192,304,224,320,256,320C288,320,320,304,352,320C384,336,416,320,416,320L416,384L96,384z"/>
+                            <path fill="#F0F0F0" d="M128,224C128,224,160,240,192,224C224,208,256,224,288,224C320,224,352,208,384,224L384,320L128,320z"/>
+                            <path fill="#F0F0F0" d="M160,128C160,128,192,144,224,128C256,112,288,128,320,128L320,224L160,224z"/>
+                            
+                            <!-- Minimal Decorations -->
+                            <circle fill="#F0F0F0" cx="256" cy="128" r="16"/>
+                            <circle fill="#FFFFFF" cx="256" cy="128" r="8"/>
+                            
+                            <!-- Silver Ribbon -->
+                            <rect fill="#C0C0C0" x="96" y="352" width="320" height="4"/>
+                            <rect fill="#C0C0C0" x="128" y="256" width="256" height="4"/>
+                            <rect fill="#C0C0C0" x="160" y="160" width="192" height="4"/>
+                            
+                            <!-- Subtle Flower Accents -->
+                            <circle fill="#F0F0F0" cx="128" cy="336" r="8"/>
+                            <circle fill="#FFFFFF" cx="128" cy="336" r="4"/>
+                            
+                            <circle fill="#F0F0F0" cx="384" cy="336" r="8"/>
+                            <circle fill="#FFFFFF" cx="384" cy="336" r="4"/>
+                            
+                            <circle fill="#F0F0F0" cx="160" cy="240" r="8"/>
+                            <circle fill="#FFFFFF" cx="160" cy="240" r="4"/>
+                            
+                            <circle fill="#F0F0F0" cx="352" cy="240" r="8"/>
+                            <circle fill="#FFFFFF" cx="352" cy="240" r="4"/>
+                            
+                            <!-- Cake Topper -->
+                            <path fill="#C0C0C0" d="M240,128C240,128,240,96,256,96C272,96,272,128,272,128"/>
+                            <circle fill="#C0C0C0" cx="256" cy="96" r="8"/>
+                        </svg>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold mb-2">Minimal Wedding</h3>
+                        <p class="text-gray-600">Elegante y minimalista para bodas con acabados suaves y refinados.</p>
+                    </div>
+                </div>
+                
+                <!-- Cake 5 - Strawberry Cheesecake -->
+                <div class="cake-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="h-64 bg-[#ffe6e6] flex items-center justify-center p-4">
+                        <svg viewBox="0 0 512 512" class="cake-image">
+                            <!-- Cheesecake Base -->
+                            <path fill="#F5DEB3" d="M96,352L416,352L416,384L96,384z"/>
+                            <path fill="#FFFACD" d="M96,256L416,256L416,352L96,352z"/>
+                            
+                            <!-- Graham Cracker Crust -->
+                            <path fill="#D2B48C" d="M96,352L416,352L416,368L96,368z"/>
+                            
+                            <!-- Strawberry Topping -->
+                            <path fill="#FF69B4" d="M96,256C96,256,128,240,160,256C192,272,224,240,256,256C288,272,320,240,352,256C384,272,416,256,416,256L416,272L96,272z"/>
+                            
+                            <!-- Strawberries -->
+                            <path fill="#FF0000" d="M128,240C121.373,240,116,234.627,116,228C116,221.373,121.373,216,128,216C134.627,216,140,221.373,140,228C140,234.627,134.627,240,128,240z"/>
+                            <path fill="#006400" d="M128,216L128,208"/>
+                            <circle fill="#FFFFFF" cx="124" cy="224" r="2"/>
+                            <circle fill="#FFFFFF" cx="132" cy="228" r="2"/>
+                            <circle fill="#FFFFFF" cx="128" cy="232" r="2"/>
+                            
+                            <path fill="#FF0000" d="M192,224C185.373,224,180,218.627,180,212C180,205.373,185.373,200,192,200C198.627,200,204,205.373,204,212C204,218.627,198.627,224,192,224z"/>
+                            <path fill="#006400" d="M192,200L192,192"/>
+                            <circle fill="#FFFFFF" cx="188" cy="208" r="2"/>
+                            <circle fill="#FFFFFF" cx="196" cy="212" r="2"/>
+                            <circle fill="#FFFFFF" cx="192" cy="216" r="2"/>
+                            
+                            <path fill="#FF0000" d="M256,240C249.373,240,244,234.627,244,228C244,221.373,249.373,216,256,216C262.627,216,268,221.373,268,228C268,234.627,262.627,240,256,240z"/>
+                            <path fill="#006400" d="M256,216L256,208"/>
+                            <circle fill="#FFFFFF" cx="252" cy="224" r="2"/>
+                            <circle fill="#FFFFFF" cx="260" cy="228" r="2"/>
+                            <circle fill="#FFFFFF" cx="256" cy="232" r="2"/>
+                            
+                            <path fill="#FF0000" d="M320,224C313.373,224,308,218.627,308,212C308,205.373,313.373,200,320,200C326.627,200,332,205.373,332,212C332,218.627,326.627,224,320,224z"/>
+                            <path fill="#006400" d="M320,200L320,192"/>
+                            <circle fill="#FFFFFF" cx="316" cy="208" r="2"/>
+                            <circle fill="#FFFFFF" cx="324" cy="212" r="2"/>
+                            <circle fill="#FFFFFF" cx="320" cy="216" r="2"/>
+                            
+                            <path fill="#FF0000" d="M384,240C377.373,240,372,234.627,372,228C372,221.373,377.373,216,384,216C390.627,216,396,221.373,396,228C396,234.627,390.627,240,384,240z"/>
+                            <path fill="#006400" d="M384,216L384,208"/>
+                            <circle fill="#FFFFFF" cx="380" cy="224" r="2"/>
+                            <circle fill="#FFFFFF" cx="388" cy="228" r="2"/>
+                            <circle fill="#FFFFFF" cx="384" cy="232" r="2"/>
+                            
+                            <!-- Whipped Cream -->
+                            <circle fill="#FFFFFF" cx="160" cy="240" r="12"/>
+                            <circle fill="#FFFFFF" cx="224" cy="224" r="12"/>
+                            <circle fill="#FFFFFF" cx="288" cy="240" r="12"/>
+                            <circle fill="#FFFFFF" cx="352" cy="224" r="12"/>
+                            
+                            <!-- Slice Cut -->
+                            <path fill="#FFFACD" d="M352,256L416,256L416,352L352,352z"/>
+                            <path fill="#D2B48C" d="M352,352L416,352L416,368L352,368z"/>
+                            <path fill="#FF69B4" d="M352,256C352,256,368,248,384,256C400,264,416,256,416,256L416,272L352,272z"/>
+                        </svg>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold mb-2">Strawberry Cheesecake</h3>
+                        <p class="text-gray-600">Cremoso cheesecake con cobertura de fresas frescas.</p>
+                    </div>
+                </div>
+                
+                <!-- Cake 6 - Unicorn Cake -->
+                <div class="cake-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="h-64 bg-[#f3e5f5] flex items-center justify-center p-4">
+                        <svg viewBox="0 0 512 512" class="cake-image">
+                            <!-- Unicorn Cake -->
+                            <rect fill="#F0F8FF" x="96" y="320" width="320" height="64" rx="8" ry="8"/>
+                            <rect fill="#FFB6C1" x="128" y="224" width="256" height="96" rx="8" ry="8"/>
+                            <rect fill="#E6E6FA" x="160" y="128" width="192" height="96" rx="8" ry="8"/>
+                            
+                            <!-- Pastel Frosting -->
+                            <path fill="#FFB6C1" d="M96,320C96,320,128,304,160,320C192,336,224,304,256,320C288,336,320,304,352,320C384,336,416,320,416,320L416,336L96,336z"/>
+                            <path fill="#E6E6FA" d="M128,224C128,224,160,208,192,224C224,240,256,208,288,224C320,240,352,224,384,224L384,240L128,240z"/>
+                            <path fill="#F0F8FF" d="M160,128C160,128,192,112,224,128C256,144,288,112,320,128L320,144L160,144z"/>
+                            
+                            <!-- Rainbow Decorations -->
+                            <path fill="#FF0000" d="M128,352L160,352L160,360L128,360z"/>
+                            <path fill="#FF7F00" d="M160,352L192,352L192,360L160,360z"/>
+                            <path fill="#FFFF00" d="M192,352L224,352L224,360L192,360z"/>
+                            <path fill="#00FF00" d="M224,352L256,352L256,360L224,360z"/>
+                            <path fill="#0000FF" d="M256,352L288,352L288,360L256,360z"/>
+                            <path fill="#4B0082" d="M288,352L320,352L320,360L288,360z"/>
+                            <path fill="#9400D3" d="M320,352L352,352L352,360L320,360z"/>
+                            <path fill="#FF1493" d="M352,352L384,352L384,360L352,360z"/>
+                            
+                            <!-- Unicorn Ears -->
+                            <path fill="#FFB6C1" d="M224,128L192,80L224,96z"/>
+                            <path fill="#FFB6C1" d="M288,128L320,80L288,96z"/>
+                            
+                            <!-- Unicorn Horn -->
+                            <path fill="#FFD700" d="M256,128L256,64L240,80L256,64L272,80z"/>
+                            
+                            <!-- Unicorn Face -->
+                            <circle fill="#FFFFFF" cx="240" cy="160" r="16"/>
+                            <circle fill="#FFFFFF" cx="272" cy="160" r="16"/>
+                            <circle fill="#000000" cx="240" cy="160" r="8"/>
+                            <circle fill="#000000" cx="272" cy="160" r="8"/>
+                            <circle fill="#FFFFFF" cx="236" cy="156" r="3"/>
+                            <circle fill="#FFFFFF" cx="268" cy="156" r="3"/>
+                            
+                            <!-- Unicorn Smile -->
+                            <path fill="#000000" d="M240,192C240,192,256,208,272,192"/>
+                            
+                            <!-- Sprinkles -->
+                            <circle fill="#FF00FF" cx="144" cy="256" r="4"/>
+                            <circle fill="#00FFFF" cx="176" cy="272" r="4"/>
+                            <circle fill="#FFFF00" cx="208" cy="256" r="4"/>
+                            <circle fill="#FF00FF" cx="240" cy="272" r="4"/>
+                            <circle fill="#00FFFF" cx="272" cy="256" r="4"/>
+                            <circle fill="#FFFF00" cx="304" cy="272" r="4"/>
+                            <circle fill="#FF00FF" cx="336" cy="256" r="4"/>
+                            <circle fill="#00FFFF" cx="368" cy="272" r="4"/>
+                        </svg>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold mb-2">Unicorn Cake</h3>
+                        <p class="text-gray-600">Mágico pastel con colores pastel y detalles de unicornio.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 px-4 text-center">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8">¿Listo para ordenar tu pastel perfecto?</h2>
+            
+            <div class="flex flex-col md:flex-row justify-center gap-4 mb-12">
+                <a href="https://wa.me/1234567890" class="btn-primary text-white font-medium py-3 px-8 rounded-full text-lg flex items-center justify-center gap-2 shadow-lg">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M8.53 7.33C8.37 7.33 8.1 7.39 7.87 7.64C7.65 7.89 7 8.5 7 9.71C7 10.93 7.89 12.1 8 12.27C8.14 12.44 9.76 14.94 12.25 16C12.84 16.27 13.3 16.42 13.66 16.53C14.25 16.72 14.79 16.69 15.22 16.63C15.7 16.56 16.68 16.03 16.89 15.45C17.1 14.87 17.1 14.38 17.04 14.27C16.97 14.17 16.81 14.11 16.56 14C16.31 13.86 15.09 13.26 14.87 13.18C14.64 13.1 14.5 13.06 14.31 13.3C14.15 13.55 13.67 14.11 13.53 14.27C13.38 14.44 13.24 14.46 13 14.34C12.74 14.21 11.94 13.95 11 13.11C10.26 12.45 9.77 11.64 9.62 11.39C9.5 11.15 9.61 11 9.73 10.89C9.84 10.78 10 10.6 10.1 10.45C10.23 10.31 10.27 10.2 10.35 10.04C10.43 9.87 10.39 9.73 10.33 9.61C10.27 9.5 9.77 8.26 9.56 7.77C9.36 7.29 9.16 7.35 9 7.34C8.86 7.34 8.7 7.33 8.53 7.33Z" />
+                    </svg>
+                    Ordenar por WhatsApp
+                </a>
+                
+                <a href="https://instagram.com" class="btn-secondary bg-white font-medium py-3 px-8 rounded-full text-lg flex items-center justify-center gap-2 shadow-md">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z" />
+                    </svg>
+                    Ver más en Instagram
+                </a>
+            </div>
+            
+            <!-- Decorative Elements -->
+            <div class="relative h-12 my-8">
+                <div class="absolute left-1/4 transform -translate-x-1/2 w-12 h-12">
+                    <svg viewBox="0 0 512 512" class="cake-image decorative-icon">
+                        <!-- Cupcake -->
+                        <path fill="#A0522D" d="M160,320v96c0,8.837,7.163,16,16,16h160c8.837,0,16-7.163,16-16v-96H160z"/>
+                        <path fill="#D2691E" d="M144,256c-26.51,0-48,21.49-48,48c0,26.51,21.49,48,48,48h224c26.51,0,48-21.49,48-48c0-26.51-21.49-48-48-48H144z"/>
+                        <path fill="#FFB6C1" d="M352,256c0-53.02-42.98-96-96-96s-96,42.98-96,96H352z"/>
+                        <path fill="#FF69B4" d="M336,256c0-44.183-35.817-80-80-80s-80,35.817-80,80H336z"/>
+                        <path fill="#FFB6C1" d="M320,256c0-35.346-28.654-64-64-64s-64,28.654-64,64H320z"/>
+                        <circle fill="#FF0000" cx="220" cy="200" r="4"/>
+                        <circle fill="#00FF00" cx="260" cy="180" r="4"/>
+                        <circle fill="#0000FF" cx="300" cy="210" r="4"/>
+                        <circle fill="#FFFF00" cx="240" cy="220" r="4"/>
+                        <circle fill="#FF00FF" cx="280" cy="190" r="4"/>
+                        <circle fill="#FF0000" cx="256" cy="160" r="16"/>
+                        <path fill="#006400" d="M260,160c0,0-4-40,20-60"/>
+                    </svg>
+                </div>
+                <div class="absolute left-3/4 transform -translate-x-1/2 w-12 h-12">
+                    <svg viewBox="0 0 512 512" class="cake-image decorative-icon">
+                        <!-- Icing Swirl -->
+                        <path fill="#FFFFFF" d="M256,64c-106.039,0-192,85.961-192,192s85.961,192,192,192s192-85.961,192-192S362.039,64,256,64z M256,384c-70.692,0-128-57.308-128-128s57.308-128,128-128s128,57.308,128,128S326.692,384,256,384z"/>
+                        <path fill="#FFB6C1" d="M256,128c-70.692,0-128,57.308-128,128s57.308,128,128,128s128-57.308,128-128S326.692,128,256,128z M256,320c-35.346,0-64-28.654-64-64s28.654-64,64-64s64,28.654,64,64S291.346,320,256,320z"/>
+                        <path fill="#FF69B4" d="M256,192c-35.346,0-64,28.654-64,64s28.654,64,64,64s64-28.654,64-64S291.346,192,256,192z M256,288c-17.673,0-32-14.327-32-32s14.327-32,32-32s32,14.327,32,32S273.673,288,256,288z"/>
+                        <path fill="#FFFFFF" d="M256,224c-17.673,0-32,14.327-32,32s14.327,32,32,32s32-14.327,32-32S273.673,224,256,224z"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#b9763a] bg-opacity-10 py-8 px-4">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-6 md:mb-0">
+                <h2 class="text-2xl font-bold text-[#b9763a]">Cakería</h2>
+                <p class="text-gray-700">Pasteles artesanales hechos con amor</p>
+            </div>
+            
+            <div class="flex flex-col items-center md:items-end">
+                <div class="flex space-x-4 mb-4">
+                    <a href="#" class="text-[#b9763a] hover:text-[#a06732] transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M8.53 7.33C8.37 7.33 8.1 7.39 7.87 7.64C7.65 7.89 7 8.5 7 9.71C7 10.93 7.89 12.1 8 12.27C8.14 12.44 9.76 14.94 12.25 16C12.84 16.27 13.3 16.42 13.66 16.53C14.25 16.72 14.79 16.69 15.22 16.63C15.7 16.56 16.68 16.03 16.89 15.45C17.1 14.87 17.1 14.38 17.04 14.27C16.97 14.17 16.81 14.11 16.56 14C16.31 13.86 15.09 13.26 14.87 13.18C14.64 13.1 14.5 13.06 14.31 13.3C14.15 13.55 13.67 14.11 13.53 14.27C13.38 14.44 13.24 14.46 13 14.34C12.74 14.21 11.94 13.95 11 13.11C10.26 12.45 9.77 11.64 9.62 11.39C9.5 11.15 9.61 11 9.73 10.89C9.84 10.78 10 10.6 10.1 10.45C10.23 10.31 10.27 10.2 10.35 10.04C10.43 9.87 10.39 9.73 10.33 9.61C10.27 9.5 9.77 8.26 9.56 7.77C9.36 7.29 9.16 7.35 9 7.34C8.86 7.34 8.7 7.33 8.53 7.33Z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-[#b9763a] hover:text-[#a06732] transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-[#b9763a] hover:text-[#a06732] transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 22 12.06C22 6.53 17.5 2.04 12 2.04Z" />
+                        </svg>
+                    </a>
+                </div>
+                <p class="text-gray-700 text-sm">© 2025 NOVARI. Todos los derechos reservados.</p>
+            </div>
+        </div>
+        
+        <!-- Footer Decorative Elements -->
+        <div class="relative max-w-6xl mx-auto mt-6 h-8">
+            <div class="absolute left-1/4 transform -translate-x-1/2 w-10 h-10">
+                <svg viewBox="0 0 512 512" class="cake-image decorative-icon">
+                    <!-- Piping Bag -->
+                    <path fill="#F5F5F5" d="M128,128L384,384L448,128L128,128z"/>
+                    <path fill="#E0E0E0" d="M128,128L384,384L448,128L128,128z M144,144L416,144L368,352L176,160L144,144z"/>
+                    <path fill="#FF69B4" d="M96,96L128,128L176,160L96,96z"/>
+                    <path fill="#C0C0C0" d="M80,80L96,96L176,160L80,80z"/>
+                    <path fill="#A0A0A0" d="M64,64L80,80L96,96L64,64z"/>
+                </svg>
+            </div>
+            <div class="absolute left-3/4 transform -translate-x-1/2 w-10 h-10">
+                <svg viewBox="0 0 512 512" class="cake-image decorative-icon">
+                    <!-- Cake Slice -->
+                    <path fill="#F5DEB3" d="M96,416L416,416L256,128L96,416z"/>
+                    <path fill="#FFFFFF" d="M96,416L416,416L256,368L96,416z"/>
+                    <path fill="#FFB6C1" d="M128,352L384,352L256,192L128,352z"/>
+                    <path fill="#FFFFFF" d="M128,352L384,352L256,320L128,352z"/>
+                    <path fill="#F5DEB3" d="M160,288L352,288L256,224L160,288z"/>
+                    <path fill="#FF0000" d="M240,176L272,176L256,144L240,176z"/>
+                    <circle fill="#FFFFFF" cx="248" cy="160" r="2"/>
+                    <circle fill="#FFFFFF" cx="256" cy="168" r="2"/>
+                    <circle fill="#FFFFFF" cx="264" cy="160" r="2"/>
+                    <path fill="#006400" d="M256,144L256,128"/>
+                </svg>
+            </div>
+        </div>
+    </footer>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'964d86d680a86750',t:'MTc1MzQ2NjExMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
